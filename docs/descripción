@@ -1,0 +1,21 @@
+Descripcion:
+Este proyecto es un sistema de control y seguridad diseñado con el fin de automatizar
+la seguridad en el taller de soldadura. Mediante la computadora podemos ver en tiempo real 
+sobre una Raspberry Pi 3, el sistema verifica que la persona utilice los elementos de protección(antiparras y delantal) obligatorios y una vez identificados/aprobados les habilita el suministro eléctrico a un tomacorriente para que en el puedan conectar la soldadora y el extractor.
+
+Este proyecto automatiza el control preventivo mediante una cámara web USB conectada a la Raspberry Pi 3, que ejecuta un modelo de detección de objetos para identificar cuatro clases:
+* `lentes de proteccion` (obligatorio)
+* `prenda protectora` (obligatorio)
+* `lentes personales` (anteojos comunes — no habilitan el equipo)
+* `persona`
+
+La lógica de Control y Protección de la Máquina es la siguiente:
+1. **Estado Inicial (Bloqueado):** Al iniciar, el módulo relé permanece abierto (sin suministro eléctrico en el tomacorriente) y se enciende el **LED rojo**.
+2. **Habilitación y Enclavamiento:** Cuando el sistema detecta `lentes de proteccion` y `prenda protectora` (con una confianza mínima del 25%), activa el **LED verde** y cierra el contacto del relé, habilitando la energía hacia la soldadora.
+3. **Supervisión Continua:** Una vez habilitada la soldadora, el relé queda enclavado para evitar dañar la fuente de la máquina. Si durante el trabajo se retira alguno de los elementos obligatorios, el sistema mantiene la alimentación pero enciende el **LED rojo** de advertencia y muestra en pantalla exactamente qué elemento falta.
+
+Los componentes utilizados fueron:
+Camara web logitech
+Placa Raspberry
+Relé
+Leds

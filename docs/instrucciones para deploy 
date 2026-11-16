@@ -1,0 +1,37 @@
+Instrucciones de Instalación (Deploy)
+Debido a las limitaciones de almacenamiento (8 GB) y memoria RAM de la Raspberry Pi 3, se utiliza onnxruntime en lugar de PyTorch completo dentro de un entorno virtual.
+    Clonar el repositorio y entrar a la carpeta del proyecto:
+        git clone <URL_DEl_REPOSITORIO>
+        cd proyectoSoldadura
+
+Crear y activar el entorno virtual:
+        python3 -m venv --system-site-packages ~/venv_yolo
+        source ~/venv_yolo/bin/activate
+
+Instalar las dependencias optimizadas:
+        pip install --no-cache-dir onnxruntime opencv-python numpy
+
+Verificar el modelo: Comprobar que el archivo weights.onnx se encuentre en /home/pipi/Desktop/proyectoSoldadura/weights.onnx (o actualizar la variable ruta_del_modelo en el script principal).
+
+
+
+
+
+Manual de Usuario (Puesta en marcha)
+    Conexión de los componetes(en este orden):
+        Conectar los componentes electrónicos a los pines GPIO (BCM): LED verde al GPIO 17, LED rojo al GPIO 27 y el módulo relé al GPIO 22.
+        Conectar la cámara web Logitech a uno de los puertos USB.
+        Conectar el teclado y el mouse en los puertos USB disponibles.
+        Conectar el cable HDMI entre el monitor y la placa.
+        Conectar por último la fuente de alimentación (5V) para encender la Raspberry Pi.
+
+    Ejecución del programa:
+        Una vez iniciado el sistema operativo, abrir Thonny desde el menú de programación.
+        Verificar abajo a la derecha que esté seleccionado el intérprete del entorno virtual (/home/pipi/venv_yolo/bin/python3) y abrir el archivo seguridad_soldadora.py dentro de /home/pipi/Desktop/proyectoSoldadura.
+        Presionar el botón verde Run (Play) en la barra superior.
+
+    Operación y controles:
+        Pasados unos segundos se abrirá una ventana con la imagen en vivo de la cámara y dos mensajes (BLOQUEADO, HABILITADO o ALERTA, junto con los elementos detectados o faltantes).
+        Para controlar el sistema, hacer clic sobre la ventana de video y usar:
+            r: Reinicia el sistema y vuelve al estado BLOQUEADO (corta el relé para cambiar de operario).
+            q: Cierra el programa de forma segura, apaga ambos LEDs, corta el relé y libera la cámara.
