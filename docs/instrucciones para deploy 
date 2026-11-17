@@ -1,8 +1,8 @@
 Instrucciones de Instalación (Deploy)
-Debido a las limitaciones de almacenamiento (8 GB) y memoria RAM de la Raspberry Pi 3, se utiliza onnxruntime en lugar de PyTorch completo dentro de un entorno virtual.
+Debido a las limitaciones de almacenamiento (8 GB) y memoria RAM de la Raspberry Pi 3, utilicé onnxruntime en lugar de PyTorch completo dentro de un entorno virtual.
     Clonar el repositorio y entrar a la carpeta del proyecto:
-        git clone <URL_DEl_REPOSITORIO>
-        cd proyectoSoldadura
+        git clone <URL_DEL_REPOSITORIO>
+        cd Proyecto-de-deteccion-de-elementos-de-seguridad-Worksafely
 
 Crear y activar el entorno virtual:
         python3 -m venv --system-site-packages ~/venv_yolo
@@ -12,7 +12,8 @@ Instalar las dependencias optimizadas:
         pip install --no-cache-dir onnxruntime opencv-python numpy
 
 Verificar el modelo: Comprobar que el archivo weights.onnx se encuentre en /home/pipi/Desktop/proyectoSoldadura/weights.onnx (o actualizar la variable ruta_del_modelo en el script principal).
-
+Ejecutar el codigo (Aunque las veces que lo hice fue desde thonny con run, en el manual de usuario de abajo se explica mejor): 
+        python3 codigoPrincipal.py
 
 
 
@@ -27,7 +28,7 @@ Manual de Usuario (Puesta en marcha)
 
     Ejecución del programa:
         Una vez iniciado el sistema operativo, abrir Thonny desde el menú de programación.
-        Verificar abajo a la derecha que esté seleccionado el intérprete del entorno virtual (/home/pipi/venv_yolo/bin/python3) y abrir el archivo seguridad_soldadora.py dentro de /home/pipi/Desktop/proyectoSoldadura.
+        Verificar abajo a la derecha que esté seleccionado el intérprete del entorno virtual (en mi caso (/home/pipi/venv_yolo/bin/python3)) y abrir el archivo codigoPrincipal.py .
         Presionar el botón verde Run (Play) en la barra superior.
 
     Operación y controles:
